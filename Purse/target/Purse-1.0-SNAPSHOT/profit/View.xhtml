@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProfitTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProfitLabel_cantidad}"/>
+                    <h:outputText value="#{profitController.selected.cantidad}" title="#{bundle.ViewProfitTitle_cantidad}"/>
+                    <h:outputText value="#{bundle.ViewProfitLabel_id}"/>
+                    <h:outputText value="#{profitController.selected.id}" title="#{bundle.ViewProfitTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewProfitLabel_idDenomination}"/>
+                    <h:outputText value="#{profitController.selected.idDenomination}" title="#{bundle.ViewProfitTitle_idDenomination}"/>
+                    <h:outputText value="#{bundle.ViewProfitLabel_idUsuario}"/>
+                    <h:outputText value="#{profitController.selected.idUsuario}" title="#{bundle.ViewProfitTitle_idUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{profitController.destroyAndView}" value="#{bundle.ViewProfitDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProfitEditLink}"/>
+                <br />
+                <h:commandLink action="#{profitController.prepareCreate}" value="#{bundle.ViewProfitCreateLink}" />
+                <br />
+                <h:commandLink action="#{profitController.prepareList}" value="#{bundle.ViewProfitShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProfitIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundleNew.ViewCoinTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundleNew.ViewCoinLabel_valor}"/>
+                    <h:outputText value="#{coinController.selected.valor}" title="#{bundleNew.ViewCoinTitle_valor}"/>
+                    <h:outputText value="#{bundleNew.ViewCoinLabel_cantidad}"/>
+                    <h:outputText value="#{coinController.selected.cantidad}" title="#{bundleNew.ViewCoinTitle_cantidad}"/>
+                    <h:outputText value="#{bundleNew.ViewCoinLabel_id}"/>
+                    <h:outputText value="#{coinController.selected.id}" title="#{bundleNew.ViewCoinTitle_id}"/>
+                    <h:outputText value="#{bundleNew.ViewCoinLabel_usuario}"/>
+                    <h:outputText value="#{coinController.selected.idUsuario.username}" title="#{bundleNew.ViewCoinTitle_usuario}"/>
+                    
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{coinController.destroyAndView}" value="#{bundleNew.ViewCoinDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundleNew.ViewCoinEditLink}"/>
+                <br />
+                <h:commandLink action="#{coinController.prepareCreate}" value="#{bundleNew.ViewCoinCreateLink}" />
+                <br />
+                <h:commandLink action="#{coinController.prepareList}" value="#{bundleNew.ViewCoinShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundleNew.ViewCoinIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

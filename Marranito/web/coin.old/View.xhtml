@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCoinTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <center>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewCoinLabel_valor}"/>
+                        <h:outputText value="#{coinController.selected.valor}" title="#{bundle.ViewCoinTitle_valor}"/>
+                        <h:outputText value="#{bundle.ViewCoinLabel_cantidad}"/>
+                        <h:outputText value="#{coinController.selected.cantidad}" title="#{bundle.ViewCoinTitle_cantidad}"/>
+                        <h:outputText value="#{bundle.ViewCoinLabel_id}"/>
+                        <h:outputText value="#{coinController.selected.id}" title="#{bundle.ViewCoinTitle_id}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{coinController.destroyAndView}" value="#{bundle.ViewCoinDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewCoinEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{coinController.prepareCreate}" value="#{bundle.ViewCoinCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{coinController.prepareList}" value="#{bundle.ViewCoinShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewCoinIndexLink}"/>
+
+                </h:form>
+            </center>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundleNew.EditCoinTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundleNew.EditCoinLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{coinController.selected.valor}" title="#{bundleNew.EditCoinTitle_valor}" />
+                    <h:outputLabel value="#{bundleNew.EditCoinLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{coinController.selected.cantidad}" title="#{bundleNew.EditCoinTitle_cantidad}" />
+                    <h:outputLabel value="#{bundleNew.EditCoinLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{coinController.selected.id}" title="#{bundleNew.EditCoinTitle_id}" required="true" requiredMessage="#{bundleNew.EditCoinRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundleNew.EditCoinLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{coinController.selected.idUsuario.username}" title="#{bundleNew.EditCoinTitle_usuario}" disabled="true"/>
+                    <h:outputLabel value="#{bundleNew.EditCoinLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{coinController.selected.idUsuario}" title="#{bundleNew.EditCoinTitle_idUsuario}" required="true" requiredMessage="#{bundleNew.EditCoinRequiredMessage_idUsuario}" disabled="true">
+                        <f:selectItems value="#{usercoinController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{coinController.update}" value="#{bundleNew.EditCoinSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundleNew.EditCoinViewLink}"/>
+                <br />
+                <h:commandLink action="#{coinController.prepareList}" value="#{bundleNew.EditCoinShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundleNew.EditCoinIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

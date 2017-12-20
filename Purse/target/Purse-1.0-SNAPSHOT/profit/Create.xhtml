@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProfitTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProfitLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{profitController.selected.cantidad}" title="#{bundle.CreateProfitTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.CreateProfitLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{profitController.selected.id}" title="#{bundle.CreateProfitTitle_id}" required="true" requiredMessage="#{bundle.CreateProfitRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateProfitLabel_idDenomination}" for="idDenomination" />
+                    <h:selectOneMenu id="idDenomination" value="#{profitController.selected.idDenomination}" title="#{bundle.CreateProfitTitle_idDenomination}" required="true" requiredMessage="#{bundle.CreateProfitRequiredMessage_idDenomination}">
+                        <f:selectItems value="#{denominationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProfitLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{profitController.selected.idUsuario}" title="#{bundle.CreateProfitTitle_idUsuario}" required="true" requiredMessage="#{bundle.CreateProfitRequiredMessage_idUsuario}">
+                        <f:selectItems value="#{userpurseController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{profitController.create}" value="#{bundle.CreateProfitSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{profitController.prepareList}" value="#{bundle.CreateProfitShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProfitIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
