@@ -14,6 +14,7 @@ import co.ms.entity.Userpurse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RegistrationController {
 
+    public UserpurseJpaController getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserpurseJpaController userService) {
+        this.userService = userService;
+    }
+
     @Autowired
+    @Qualifier("customUserDetailsService")
     public UserpurseJpaController userService;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)

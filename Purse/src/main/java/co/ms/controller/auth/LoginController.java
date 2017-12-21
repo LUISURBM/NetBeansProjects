@@ -20,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller(value = "loginController")
+
 public class LoginController {
 
-    @Autowired
+//    @Autowired
     UserpurseJpaController userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

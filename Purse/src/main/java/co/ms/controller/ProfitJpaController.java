@@ -36,9 +36,9 @@ public class ProfitJpaController implements Serializable {
         this.utx = utx;
         this.emf = emf;
     }
-    @PersistenceUnit(unitName="co.ms.entity_Purse_war_1.0-SNAPSHOTPU")
+//    @PersistenceUnit(unitName="co.ms.entity_Purse_war_1.0-SNAPSHOTPU")
     private EntityManagerFactory emf = null;
-    @Resource
+//    @Resource
     private UserTransaction utx = null;
 
     public ProfitJpaController() {
